@@ -1,0 +1,6 @@
+<launch>
+
+    <node name="wm_sound_library_node" pkg="wm_sound_library" type="play_sound.py" output="screen" >
+    </node>
+
+</launch>
