@@ -8,10 +8,14 @@ from wm_sound_library.srv import *
 import os
 from subprocess import check_call, CalledProcessError
 
+from os import listdir
+from os.path import isfile, join
+
 class wm_sound_library:
     def __init__(self, node_name):
         rospy.init_node(node_name)
         s = rospy.Service('wm_play_sound', play_service, self.play)
+        s2 = rospy.Service('wm_list_sound', list_service, self.list)
         rospack = rospkg.RosPack()
         self.packpath = rospack.get_path('wm_sound_library')
 
@@ -26,6 +30,17 @@ class wm_sound_library:
         except CalledProcessError:
             rospy.logwarn('Last subprocess call was not valid.')
             return False
+
+    def list(self, req):
+        onlyfiles = []
+        try:
+            onlyfiles = [f for f in listdir(self.packpath +"/sounds/") if isfile(join(self.packpath +"/sounds/", f))]
+            rospy.loginfo(str(onlyfiles))
+            return onlyfiles
+
+        except CalledProcessError:
+            rospy.logwarn('Last subprocess call was not valid.')
+            return onlyfiles
 
 if __name__ == '__main__':
 
