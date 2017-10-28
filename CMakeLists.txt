@@ -57,6 +57,7 @@ find_package(catkin REQUIRED COMPONENTS
  add_service_files(
    FILES
    play_service.srv
+   list_service.srv
  )
 
 ## Generate actions in the 'action' folder
