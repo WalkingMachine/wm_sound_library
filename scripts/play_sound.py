@@ -32,11 +32,11 @@ class wm_sound_library:
             return False
 
     def list(self, req):
-        onlyfiles = []
+        Sounds = []
         try:
-            onlyfiles = [f for f in listdir(self.packpath +"/sounds/") if isfile(join(self.packpath +"/sounds/", f))]
-            rospy.loginfo(str(onlyfiles))
-            return onlyfiles
+            Sounds = [String(f) for f in listdir(self.packpath +"/sounds/") if isfile(join(self.packpath +"/sounds/", f))]
+            rospy.loginfo(str(Sounds))
+            return list_serviceResponse(Sounds)
 
         except CalledProcessError:
             rospy.logwarn('Last subprocess call was not valid.')
