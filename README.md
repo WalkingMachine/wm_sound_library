@@ -10,7 +10,7 @@ ROS node providing a service that let you play a specific sound available in the
 
 ## Getting Started
 
-* `cd ros_workdpace/src`
+* `cd ros_workspace/src`
 * `git clone https://github.com/WalkingMachine/wm_sound_library`
 * `cd ..`
 * `catkin_make`
